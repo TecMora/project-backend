@@ -3,15 +3,22 @@ import notesRoutes from './routes/notesRoutes.js';
 import { connectDB } from './config/db.js';
 import dotenv from 'dotenv';
 
+// Load environment variables from .env file
 dotenv.config();
 
+// Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 connectDB();
 
+//middleware to parse JSON
+app.use(express.json());
+
+// Routes
 app.use("/api/notes", notesRoutes);
 
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
