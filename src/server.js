@@ -11,8 +11,6 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-connectDB();
-
 //middleware to parse JSON
 app.use(cors({
   origin: 'http://localhost:5173', // Adjust this to your frontend's URL
@@ -24,6 +22,8 @@ app.use(express.json());
 app.use("/api/notes", notesRoutes);
 
 // Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+connectDB().then(()=>{
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+})
