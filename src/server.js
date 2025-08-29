@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 //middleware to parse JSON
 app.use(cors({
   origin: 'http://localhost:5173', // Adjust this to your frontend's URL
-  // methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }))
 app.use(express.json());
 
